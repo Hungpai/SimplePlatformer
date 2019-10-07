@@ -17,12 +17,11 @@ public class Hazards : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.tag == "Player")
+        if (other.tag == "Player")
         {
-            //player.rb.velocity = new Vector2(-8, 4);
-            player.transform.position = new Vector2(-8, 4);
+            player.Death();
         }
     }
 }

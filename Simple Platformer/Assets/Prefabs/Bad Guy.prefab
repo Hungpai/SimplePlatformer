@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1705440570526352443}
   - component: {fileID: 2344863404674436277}
   - component: {fileID: 724322423965098126}
+  - component: {fileID: 1202781964378135225}
+  - component: {fileID: 6248637270376055439}
   m_Layer: 0
   m_Name: Bad Guy
   m_TagString: Untagged
@@ -106,3 +108,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1202781964378135225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115596362711748117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09553f2b182b634f98e9bf5ee669bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6248637270376055439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115596362711748117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77935b54049685419b12cd08e7186cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Blood: {fileID: 1054333746920433271, guid: a9f6d8b4ae99184418b643ac472a66fa, type: 3}

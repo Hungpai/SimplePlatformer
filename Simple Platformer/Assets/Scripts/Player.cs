@@ -8,31 +8,66 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
 
     public int movementspeed;
-    public float groundCheckRadius;
     public int jumppower;
+    public float groundCheckRadius;
+
     private bool onGround;
+    private int facing;
+
+    public int coins;
+
+    public bool moveright;
+    public bool moveleft;
+
+    public float startx;
+    public float starty;
+
+    private Animator anim;
+    public GameObject Blood;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        facing = 1;
+        startx = transform.position.x;
+        starty = transform.position.y;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.LeftArrow) || moveleft)
         {
             rb.velocity = new Vector2(-movementspeed, rb.velocity.y);
+            anim.SetBool("Walking", true);
+
+            if(facing == 1)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+                facing = 0;
+            }
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || moveright)
         {
             rb.velocity = new Vector2(movementspeed, rb.velocity.y);
-        }
-        if (Input.GetKey(KeyCode.Space) && onGround)
+            anim.SetBool("Walking", true);
+
+            if(facing == 0)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+                facing = 1;
+            }
+        }  else
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumppower);
+            anim.SetBool("Walking", false);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jump();
         }
 
     }
@@ -42,4 +77,30 @@ public class Player : MonoBehaviour
         onGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
 
+
+    public void jump()
+    {
+        if(onGround)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumppower);
+        }
+    }
+
+    public void Death()
+    {
+        StartCoroutine("respawndelay");
+    }
+
+    public IEnumerator respawndelay()
+    {
+        Instantiate(Blood, transform.position, transform.rotation);
+        enabled = false;
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        GetComponent<Renderer>().enabled = false;
+        yield return new WaitForSeconds(1);
+
+        transform.position = new Vector2(startx, starty);
+        GetComponent<Renderer>().enabled = true;
+        enabled = true;
+    }
 }

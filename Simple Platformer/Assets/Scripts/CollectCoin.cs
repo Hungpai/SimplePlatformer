@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class CollectCoin : MonoBehaviour
 {
+    private Player player;
+    public GameObject Sparkle;
+    public AudioSource bling;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -20,6 +24,9 @@ public class CollectCoin : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            bling.Play();
+            player.coins++;
+            Instantiate(Sparkle, this.transform.position, this.transform.rotation);
             Destroy(gameObject);
         }
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7410436572358722568}
   - component: {fileID: 7410436572358722679}
   - component: {fileID: 6291332656262849735}
+  - component: {fileID: 1710889630195919785}
   m_Layer: 0
   m_Name: spikes
   m_TagString: Untagged
@@ -131,5 +132,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d77935b54049685419b12cd08e7186cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Blood: {fileID: 1054333746920433271, guid: a9f6d8b4ae99184418b643ac472a66fa, type: 3}
+--- !u!114 &1710889630195919785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410436572358722678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09553f2b182b634f98e9bf5ee669bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
